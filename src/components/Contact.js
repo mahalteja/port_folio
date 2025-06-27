@@ -1,17 +1,11 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
-    message: ''
-  });
-
-  const [formStatus, setFormStatus] = useState({
-    submitted: false,
-    success: false,
     message: ''
   });
 
@@ -168,19 +162,6 @@ const Contact = () => {
               <div className="card-body p-0 p-md-4">
                 <h3 className="fs-3 fw-bold text-dark mb-4">Send Message</h3>
                 
-                {formStatus.submitted && (
-                  <div
-                    className={`alert ${formStatus.success ? 'alert-success' : 'alert-info'} d-flex align-items-center gap-2 mb-4`}
-                  >
-                    {formStatus.success ? (
-                      <CheckCircle size={20} />
-                    ) : (
-                      <AlertCircle size={20} />
-                    )}
-                    <span>{formStatus.message}</span>
-                  </div>
-                )}
-
                 <form onSubmit={onSubmit} autoComplete="off">
                   <div className="row">
                     <div className="col-md-6">
