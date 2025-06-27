@@ -125,7 +125,7 @@ const Projects = () => {
         </div>
 
         {/* Filter Buttons */}
-        <div className="d-flex justify-content-center mb-5">
+        {/* <div className="d-flex justify-content-center mb-5">
           <div className="d-flex flex-wrap gap-3">
             {categories.map((category) => (
               <button
@@ -137,7 +137,7 @@ const Projects = () => {
               </button>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* Projects Grid */}
         <div className="row g-4">
