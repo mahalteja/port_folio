@@ -144,7 +144,7 @@ const Projects = () => {
           {filteredProjects.map((project, index) => (
             <div
               key={project.id}
-              className="p-0 col-md-6 col-lg-4"
+              className="col-md-6 col-lg-4"
             >
               <div 
                 className={`card h-100 position-relative border-0 shadow-lg ${project.featured ? 'border-primary border-2' : ''}`}
@@ -282,7 +282,7 @@ const Projects = () => {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="d-flex gap-3">
+                  <div className="d-flex flex-column flex-sm-row gap-3">
                     <a
                       href={project.liveUrl}
                       target="_blank"
