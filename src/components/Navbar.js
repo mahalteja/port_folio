@@ -84,7 +84,12 @@ const Navbar = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className=" mt-2 py-3 d-lg-none w-100"
+          className="mt-2 py-3 d-lg-none w-100"
+          style={{
+            background: 'rgba(255, 255, 255, 0.95)',
+            backdropFilter: 'blur(10px)',
+            borderTop: '1px solid rgba(0, 0, 0, 0.1)'
+          }}
         >
           <div className="container">
             <ul className="navbar-nav">
