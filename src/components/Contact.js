@@ -51,8 +51,8 @@ const Contact = () => {
     {
       icon: Mail,
       title: 'Email',
-      value: 'mahalteja@gmail.com',
-      link: 'mailto:mahalteja@gmail.com'
+      value: 'mahaltejapilla08@gmail.com',
+      link: 'mailto:mahaltejapilla08@gmail.com'
     },
     {
       icon: Phone,

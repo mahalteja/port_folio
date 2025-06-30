@@ -29,7 +29,7 @@ const Footer = () => {
 
   const contactInfo = [
     { icon: Mail, text: 'mahaltejapilla08@gmail.com', href: 'mailto:mahaltejapilla08@gmail.com' },
-    { icon: Phone, text: '+1 91 7995447216', href: 'tel:+917995447216' },
+    { icon: Phone, text: '+91 7995447216', href: 'tel:+917995447216' },
     { icon: MapPin, text: 'Hyderabad, India', href: '#' }
   ];
 

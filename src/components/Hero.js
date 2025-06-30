@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, ArrowRight, Code, Palette, Zap } from 'lucide-react';
+import { Mail, ArrowRight, Code, Palette, Zap,} from 'lucide-react';
+import resumePDF from './utils/Mahal_Teja.pdf';
 
 const Hero = () => {
   const [currentText, setCurrentText] = useState(0);
@@ -217,8 +218,8 @@ const Hero = () => {
                   transition={{ duration: 0.6, delay: 1.2, ease: "easeOut" }}
                 >
                   <motion.a
-                    href="/Mahal Teja_Resume.pdf"
-                    download
+                    href={resumePDF}
+                    download="Mahal_Teja_Resume.pdf"
                     className="btn btn-outline-warning btn-lg d-inline-flex align-items-center gap-2 px-4 py-3 fw-semibold"
                     aria-label="Download resume"
                     whileHover={{ scale: 1.05, y: -2 }}

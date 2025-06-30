@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, Eye, Code } from 'lucide-react';
+import { ExternalLink, Github, Eye, Code, Lock, Clock } from 'lucide-react';
 
 const Projects = () => {
-  const [filter, setFilter] = useState('all');
   const [hoveredProject, setHoveredProject] = useState(null);
   const [clickedProject, setClickedProject] = useState(null);
 
@@ -61,11 +60,11 @@ const Projects = () => {
     {
       id: 3,
       title: 'Netflix GPT',
-      description: 'A Netflix-inspired application with AI-powered recommendations and content discovery features, built as a part-time project.',
+      description: 'A Netflix-inspired application with AI-powered recommendations and content discovery features, built as a part-time project. Implemented Routing, Redux Store, TailwindCSS, Firebase Authentication, and Memoization, Deepseek API, and more',
       image: '🎬',
       category: 'react',
       technologies: ['React', 'Redux Toolkit', 'Tailwind CSS', 'HTML', 'CSS', 'JavaScript'],
-      liveUrl: '#',
+      liveUrl: 'https://netflixgpt-b5fac.web.app/',
       githubUrl: 'https://github.com/mahalteja/netflix-gpt',
       featured: true
     },
@@ -77,7 +76,7 @@ const Projects = () => {
       category: 'react',
       technologies: ['React', 'Redux Toolkit', 'Styled Components', 'CSS3', 'JavaScript', 'HTML5', 'CSS Grid', 'Flexbox'],
       liveUrl: '#',
-      githubUrl: 'https://github.com/srimworks/eduTech',
+      githubUrl: '#',
       featured: false
     },
     {
@@ -104,16 +103,6 @@ const Projects = () => {
     }
   ];
 
-  const categories = [
-    { id: 'all', name: 'All Projects' },
-    { id: 'react', name: 'React' },
-    { id: 'javascript', name: 'JavaScript' }
-  ];
-
-  const filteredProjects = filter === 'all' 
-    ? projects 
-    : projects.filter(project => project.category === filter);
-
   return (
     <section id="projects" className="section bg-light">
       <div className="container">
@@ -124,24 +113,9 @@ const Projects = () => {
           </p>
         </div>
 
-        {/* Filter Buttons */}
-        {/* <div className="d-flex justify-content-center mb-5">
-          <div className="d-flex flex-wrap gap-3">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setFilter(category.id)}
-                className={`btn px-4 py-2 rounded-pill fw-medium ${filter === category.id ? 'btn-primary shadow-custom' : 'btn-outline-primary'}`}
-              >
-                {category.name}
-              </button>
-            ))}
-          </div>
-        </div> */}
-
         {/* Projects Grid */}
         <div className="row g-4">
-          {filteredProjects.map((project, index) => (
+          {projects.map((project, index) => (
             <div
               key={project.id}
               className="col-md-6 col-lg-4"
@@ -220,34 +194,64 @@ const Projects = () => {
                     }}
                   >
                     <div className="d-flex gap-4">
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="d-flex align-items-center justify-content-center bg-white text-dark rounded-circle shadow-lg"
-                        style={{ 
-                          width: '3.5rem', 
-                          height: '3.5rem',
-                          transition: 'all 0.3s ease'
-                        }}
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <ExternalLink size={22} />
-                      </a>
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="d-flex align-items-center justify-content-center bg-white text-dark rounded-circle shadow-lg"
-                        style={{ 
-                          width: '3.5rem', 
-                          height: '3.5rem',
-                          transition: 'all 0.3s ease'
-                        }}
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <Github size={22} />
-                      </a>
+                      {project.liveUrl !== '#' ? (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="d-flex align-items-center justify-content-center bg-white text-dark rounded-circle shadow-lg"
+                          style={{ 
+                            width: '3.5rem', 
+                            height: '3.5rem',
+                            transition: 'all 0.3s ease'
+                          }}
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <ExternalLink size={22} />
+                        </a>
+                      ) : (
+                        <div
+                          className="d-flex align-items-center justify-content-center bg-white text-muted rounded-circle shadow-lg"
+                          style={{ 
+                            width: '3.5rem', 
+                            height: '3.5rem',
+                            transition: 'all 0.3s ease',
+                            cursor: 'not-allowed'
+                          }}
+                          title="Coming Soon"
+                        >
+                          <Clock size={22} />
+                        </div>
+                      )}
+                      {project.githubUrl !== '#' ? (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="d-flex align-items-center justify-content-center bg-white text-dark rounded-circle shadow-lg"
+                          style={{ 
+                            width: '3.5rem', 
+                            height: '3.5rem',
+                            transition: 'all 0.3s ease'
+                          }}
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <Github size={22} />
+                        </a>
+                      ) : (
+                        <div
+                          className="d-flex align-items-center justify-content-center bg-white text-muted rounded-circle shadow-lg"
+                          style={{ 
+                            width: '3.5rem', 
+                            height: '3.5rem',
+                            transition: 'all 0.3s ease',
+                            cursor: 'not-allowed'
+                          }}
+                          title="Private Repository"
+                        >
+                          <Lock size={22} />
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -283,41 +287,79 @@ const Projects = () => {
 
                   {/* Action Buttons */}
                   <div className="d-flex flex-column flex-sm-row gap-3">
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn d-flex align-items-center justify-content-center gap-2 small flex-fill fw-semibold"
-                      style={{
-                        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                        border: 'none',
-                        borderRadius: '12px',
-                        padding: '12px 20px',
-                        color: 'white',
-                        boxShadow: '0 4px 15px rgba(102, 126, 234, 0.3)',
-                        transition: 'all 0.3s ease'
-                      }}
-                    >
-                      <Eye size={16} />
-                      Live Demo
-                    </a>
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn d-flex align-items-center justify-content-center gap-2 small flex-fill fw-semibold"
-                      style={{
-                        background: 'transparent',
-                        border: '2px solid #667eea',
-                        borderRadius: '12px',
-                        padding: '12px 20px',
-                        color: '#667eea',
-                        transition: 'all 0.3s ease'
-                      }}
-                    >
-                      <Code size={16} />
-                      Code
-                    </a>
+                    {project.liveUrl !== '#' ? (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn d-flex align-items-center justify-content-center gap-2 small flex-fill fw-semibold"
+                        style={{
+                          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                          border: 'none',
+                          borderRadius: '12px',
+                          padding: '12px 20px',
+                          color: 'white',
+                          boxShadow: '0 4px 15px rgba(102, 126, 234, 0.3)',
+                          transition: 'all 0.3s ease'
+                        }}
+                      >
+                        <Eye size={16} />
+                        Live Demo
+                      </a>
+                    ) : (
+                      <div
+                        className="btn d-flex align-items-center justify-content-center gap-2 small flex-fill fw-semibold"
+                        style={{
+                          background: 'linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%)',
+                          border: '2px solid #d0d0d0',
+                          borderRadius: '12px',
+                          padding: '12px 20px',
+                          color: '#666',
+                          cursor: 'not-allowed',
+                          transition: 'all 0.3s ease'
+                        }}
+                        title="Coming Soon"
+                      >
+                        <Clock size={16} />
+                        Coming Soon
+                      </div>
+                    )}
+                    {project.githubUrl !== '#' ? (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn d-flex align-items-center justify-content-center gap-2 small flex-fill fw-semibold"
+                        style={{
+                          background: 'transparent',
+                          border: '2px solid #667eea',
+                          borderRadius: '12px',
+                          padding: '12px 20px',
+                          color: '#667eea',
+                          transition: 'all 0.3s ease'
+                        }}
+                      >
+                        <Code size={16} />
+                        Code
+                      </a>
+                    ) : (
+                      <div
+                        className="btn d-flex align-items-center justify-content-center gap-2 small flex-fill fw-semibold"
+                        style={{
+                          background: 'transparent',
+                          border: '2px solid #d0d0d0',
+                          borderRadius: '12px',
+                          padding: '12px 20px',
+                          color: '#666',
+                          cursor: 'not-allowed',
+                          transition: 'all 0.3s ease'
+                        }}
+                        title="Private Repository"
+                      >
+                        <Lock size={16} />
+                        Private
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
